@@ -23,10 +23,6 @@ const FieldMap = (fieldProps: FieldProps): JSX.Element => {
           (el !== bomb && mask[i] === Mask.Flag && mask[i] !== Mask.Hidden) ||
           (el === bomb && mask[i] !== Mask.Flag && mask[i] !== Mask.Hidden)
       ),
-    // !field.some(
-    //   (el, i) =>
-    //     el === bomb && mask[i] !== Mask.Flag && mask[i] !== Mask.Hidden
-    // )
     [field, mask]
   );
 
