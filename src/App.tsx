@@ -1,24 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import FieldComponent from "./ components/field-map/field-map";
+import CounterComponent from "./ components/counter/counter";
+import { useState } from "react";
+import { Smile } from "./type";
 
 function App() {
+  const [mines, setMines] = useState(40);
+  const [smile, setSmile] = useState<Smile>("start");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CounterComponent smile={smile} mines={mines} setSmile={setSmile} />
+      <FieldComponent setMines={setMines} setSmile={setSmile} />
     </div>
   );
 }
