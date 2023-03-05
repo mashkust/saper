@@ -16,7 +16,7 @@ const FieldMap = (fieldProps: FieldProps): JSX.Element => {
   const table = new Array(size).fill(true);
 
   const win = React.useMemo(
-    //победа, когда нет мин, которые скрыты
+    //победа, когда все поля без мин открыты(маска скрыта)
     () => {
       const winArray = field.filter(
         (el, i) => el !== bomb && mask[i] !== Mask.Hidden
