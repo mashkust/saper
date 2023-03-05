@@ -16,13 +16,13 @@ const FieldMap = (fieldProps: FieldProps): JSX.Element => {
   const table = new Array(size).fill(true);
 
   const win = React.useMemo(
-    //изменить победу
-    () =>
-      !field.some(
-        (el, i) =>
-          (el !== bomb && mask[i] === Mask.Flag && mask[i] !== Mask.Hidden) ||
-          (el === bomb && mask[i] !== Mask.Flag && mask[i] !== Mask.Hidden)
-      ),
+    //победа, когда нет мин, которые скрыты
+    () => {
+      const winArray = field.filter(
+        (el, i) => el !== bomb && mask[i] !== Mask.Hidden
+      );
+      return winArray.length === 0 ? true : false;
+    },
     [field, mask]
   );
 
@@ -149,7 +149,7 @@ const FieldMap = (fieldProps: FieldProps): JSX.Element => {
                     boxShadow:
                       "-13px -14px 0px -10px rgba(168, 172, 174, 0.44) inset",
                   }}
-                  onMouseDown={() => mouseDownHandler()}
+                  onMouseDown={mouseDownHandler}
                   onClick={() => clickHandler(x, y)}
                   onContextMenu={(evt) => contextHandler(evt, x, y)}
                 >
